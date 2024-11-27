@@ -1,56 +1,120 @@
 <!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
+<html lang="en">
 
-  <body>
-    <style>
-      body {
-        background-color: #333;
-        color: white;
-      }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web de envío de formulario</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./script.js"></script>
+</head>
 
-      h1 {
-        text-align: center;
-      }
+<body>
+    <span class="title">Formulario de envío</span>
+    <form action="https://www.w3schools.com/action_page.php" method="get" class="form" id="form">
+        <fieldset class="user-data">
+            <legend>Datos Usuario</legend>
+            <div class="field">
+                <label for="username">Nombre de Usuario</label>
+                <input type="text" name="username" id="username" placeholder="Nombre" required>
+            </div>
+            <div class="field">
+                <label for="password">Contraseña</label>
+                <input type="password" name="password" id="password" placeholder="Introduce Contraseña" required>
+                <div class="show-passwd">
+                    <input type="checkbox" id="show-password">
+                    <label for="show-password">Mostrar contraseña</label>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="personal-data">
+            <legend>Datos Personales</legend>
+            <div class="field name">
+                <label for="name">Nombre</label>
+                <input type="text" name="name" id="name" placeholder="Pepe" required>
+            </div>
+            <div class="field surname">
+                <label for="surname">Apellidos</label>
+                <input type="text" name="surname" id="surname" placeholder="Pérez García" required>
+            </div>
+            <div class="field phone">
+                <label for="phone">Teléfono</label>
+                <input type="text" name="pohne" id="pohne" placeholder="+34 922123123" required>
+            </div>
+            <div class="field postal-code">
+                <label for="postal-code">Código Postal</label>
+                <input type="text" name="postal-code" id="postal-code" placeholder="38XXX" required>
+            </div>
+            <div class="field identification-type">
+                <label for="identification-type">DIN/NIE</label>
+                <select name="identification-type" id="identification-type">
+                    <option value="">---</option>
+                    <option value="DNI/NIE">DNI/NIE</option>
+                    <option value="NIF">NIF</option>
+                </select>
+                <input type="text" name="dni" id="dni" placeholder="112345678Z">
+            </div>
+            <div class="field-options account-type">
+                <span>Crear cuenta como</span>
+                <div class="options">
+                    <div>
+                        <input type="radio" name="account" id="particular" value="particular" required>
+                        <label for="particular">Particular</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="account" id="company" value="company" required>
+                        <label for="company">Empresa</label>
+                    </div>
+                </div>
+            </div>
+            <div class="field yearbirth">
+                <label for="year">Año de Nacimiento</label>
+                <input type="number" name="date" id="date" min="1900" placeholder="1999" required>
+            </div>
+            <div class="field-options hobbies">
+                <span>Elige tus aficiones</span>
+                <div class="options">
+                    <div>
+                        <input type="checkbox" name="music" id="music">
+                        <label for="music">Música</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="music" id="music">
+                        <label for="">Manualidades</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="music" id="music">
+                        <label for="sports">Deporte</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="music" id="music">
+                        <label for="arts">Artes</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="music" id="music">
+                        <label for="videogames">Videojuegos</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="music" id="music">
+                        <label for="lecture">Lectura</label>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="publish-data">
+            <legend>Datos Publicación</legend>
+            <div class="field">
+                <label for="title">Título</label>
+                <input type="text" name="title" id="title" placeholder="Título" maxlength="15" required>
+            </div>
+            <div class="field">
+                <label for="description">Descripción</label>
+                <textarea name="description" id="description" placeholder="Descripción" maxlength="120"
+                    required></textarea>
+            </div>
+        </fieldset>
+        <input type="submit" value="Enviar">
+    </form>
+</body>
 
-      h2 {
-        text-align: center;
-      }
-
-      input {
-        display: block;
-        margin: 0 auto;
-        width: 50%;
-        padding: 10px;
-        margin-bottom: 10px;
-      }
-    </style>
-    <h1>Formulario</h1>
-    <br />
-    <h2>tel</h2>
-    <input type="tel" name="" id="" placeholder="Telefono" />
-    <br />
-    <h2>email</h2>
-    <input type="email" name="" id="" placeholder="email" />
-    <br />
-    <h2>number</h2>
-    <input type="number" name="" id="" placeholder="number" />
-    <br />
-    <h2>password</h2>
-    <input type="password" name="" id="" placeholder="password" />
-    <br />
-    <h2>search</h2>
-    <input type="search" name="" id="" placeholder="search" />
-    <br />
-    <h2>text</h2>
-    <input type="text" name="" id="" placeholder="text" />
-    <br />
-    <h2>url</h2>
-    <input type="url" name="" id="" placeholder="url" />
-    <br />
-  </body>
 </html>
