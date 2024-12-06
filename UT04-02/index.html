@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario con validación</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/main.js" type="module"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Parte izquierda: Formulario -->
+      <form id="form" class="form-container" novalidate>
+        <fieldset class="fieldset-container">
+          <legend>Datos de Usuario</legend>
+
+          <div class="field">
+            <label for="NombreUsuario">Nombre de Usuario</label>
+            <input
+              class="input-text"
+              type="text"
+              id="NombreUsuario"
+              name="NombreUsuario"
+              placeholder="Introduce tu nombre de usuario"
+              required
+              minlength="4"
+              maxlength="20"
+            />
+            <span class="error-message"></span>
+          </div>
+
+          <div class="field">
+            <label for="Contrasena">Contraseña</label>
+            <input
+              class="input-text"
+              type="password"
+              id="Contrasena"
+              name="Contrasena"
+              placeholder="Introduce tu contraseña"
+              minlength="8"
+              required
+            />
+            <span class="error-message"></span>
+            <div class="show-passwd">
+              <input type="checkbox" id="show-passwd" />
+              <label for="show-passwd">Mostrar contraseña</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="fieldset-container">
+          <legend>Datos Personales</legend>
+          <div class="row">
+            <div class="field">
+              <label for="Nombre">Nombre</label>
+              <input
+                class="input-text"
+                type="text"
+                id="Nombre"
+                name="Nombre"
+                placeholder="Introduce tu nombre"
+                required
+                minlength="4"
+                maxlength="20"
+              />
+              <span class="error-message"></span>
+            </div>
+            <div class="field">
+              <label for="Apellidos">Apellidos</label>
+              <input
+                class="input-text"
+                type="text"
+                id="Apellidos"
+                name="Apellidos"
+                placeholder="Introduce tus apellidos"
+                required
+                minlength="4"
+                maxlength="20"
+              />
+              <span class="error-message"></span>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="Telefono">Teléfono</label>
+              <input
+                class="input-text"
+                type="text"
+                id="Telefono"
+                name="Telefono"
+                placeholder="(+34)922001122"
+                pattern="^\(\+\d{2}\)\d{9}$"
+                required
+              />
+              <span class="error-message"></span>
+            </div>
+            <div class="field">
+              <label for="CodigoPostal">Código Postal</label>
+              <input
+                class="input-text"
+                type="text"
+                id="CodigoPostal"
+                name="CodigoPostal"
+                placeholder="38XXX"
+                pattern="^\d{5}$"
+                required
+              />
+              <span class="error-message"></span>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="DniNie">DNI/NIE</label>
+              <input
+                class="input-text"
+                type="text"
+                id="DnieNie"
+                name="DniNie"
+                placeholder=""
+                pattern=""
+                required
+              />
+              <span class="error-message"></span>
+            </div>
+            <div class="field">
+              <label for="CuentaComo">Crear cuenta como:</label>
+              <div class="radio-item">
+                <input
+                  type="radio"
+                  name="accountType"
+                  id="Particular"
+                  class="input-check"
+                  required
+                />
+                <label for="Particular">Particular</label>
+              </div>
+              <div class="radio-item">
+                <input
+                  type="radio"
+                  name="accountType"
+                  id="Empresa"
+                  class="input-check"
+                  required
+                />
+                <label for="Empresa">Empresa</label>
+              </div>
+            </div>
+            <div class="field">
+              <label for="AnioNacimiento">Año de Nacimiento</label>
+              <select
+                class="input-text"
+                id="AnioNacimiento"
+                name="AnioNacimiento"
+                required
+              >
+                <option value="" disabled selected>Selecciona un año</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <span>Elige tus aficiones</span>
+              <div class="checkbox-container">
+                <div class="checkbox-item">
+                  <input
+                    type="checkbox"
+                    id="MU"
+                    name="hobbies"
+                    value="MU"
+                    class="hobby-checkbox"
+                  />
+                  <label for="MU">Música</label>
+                </div>
+                <div class="checkbox-item">
+                  <input
+                    type="checkbox"
+                    id="DE"
+                    name="hobbies"
+                    value="DE"
+                    class="hobby-checkbox"
+                  />
+                  <label for="DE">Deporte</label>
+                </div>
+                <div class="checkbox-item">
+                  <input
+                    type="checkbox"
+                    id="VI"
+                    name="hobbies"
+                    value="VI"
+                    class="hobby-checkbox"
+                  />
+                  <label for="VI">Videojuegos</label>
+                </div>
+                <div class="checkbox-item">
+                  <input
+                    type="checkbox"
+                    id="MA"
+                    name="hobbies"
+                    value="MA"
+                    class="hobby-checkbox"
+                  />
+                  <label for="MA">Manualidades</label>
+                </div>
+                <div class="checkbox-item">
+                  <input
+                    type="checkbox"
+                    id="AR"
+                    name="hobbies"
+                    value="AR"
+                    class="hobby-checkbox"
+                  />
+                  <label for="AR">Arte</label>
+                </div>
+                <div class="checkbox-item">
+                  <input
+                    type="checkbox"
+                    id="LE"
+                    name="hobbies"
+                    value="LE"
+                    class="hobby-checkbox"
+                  />
+                  <label for="LE">Lectura</label>
+                </div>
+
+                <!-- Campo oculto para almacenar el estado de los checkboxes -->
+                <input
+                  class="input-text"
+                  type="hidden"
+                  id="checkboxes-status"
+                  name="checkboxes-status"
+                  value="no"
+                />
+
+                <!-- Mensaje de error, inicialmente oculto -->
+                <span
+                  class="error-message"
+                  id="hobbies-error-message"
+                  style="display: none"
+                  >Las aficiones deben ser mínimo dos opciones
+                  seleccionadas.</span
+                >
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="fieldset-container">
+          <legend>Publicación</legend>
+
+          <div class="field">
+            <label for="PublicacionTitulo">Título</label>
+            <input
+              class="input-text"
+              type="text"
+              id="PublicacionTitulo"
+              name="PublicacionTitulo"
+              placeholder="Título"
+              maxlength="15"
+              required
+            />
+            <span id="title-word-count" class="word-count">0/15</span>
+            <span class="error-message"></span>
+          </div>
+
+          <div class="field">
+            <label for="PublicacionDescripcion">Descripción</label>
+            <textarea
+              class="input-text"
+              id="PublicacionDescripcion"
+              name="PublicacionDescripcion"
+              placeholder="Descripción"
+              maxlength="120"
+              required
+            ></textarea>
+            <span id="description-word-count" class="word-count">0/120</span>
+            <span class="error-message"></span>
+          </div>
+        </fieldset>
+
+        <input type="submit" class="submit-btn" value="Enviar" />
+      </form>
+
+      <!-- Parte derecha: Contenedor de errores genéricos -->
+      <div id="errors-container" class="errors-container">
+        <span>Errores Generales</span>
+        <ul id="errors-list"></ul>
+      </div>
+    </div>
+  </body>
+</html>
