@@ -10,7 +10,7 @@ const DOM = {
   telefono: document.getElementById("Telefono"),
   codigoPostal: document.getElementById("CodigoPostal"),
   dniNie: document.getElementById("DniNie"),
-  documentType: document.getElementById("documentType"),
+  documentType: document.getElementById("document-type"),
   cuentaComo: document.getElementsByName("CuentaComo"),
   anioNacimiento: document.getElementById("AnioNacimiento"),
 
@@ -33,16 +33,19 @@ export function initializeForm() {
 }
 
 export function createSubmitEvent() {
-  const form = document.querySelector("form");
-  form.addEventListener("submit", (event) => {
+  DOM.form.addEventListener("submit", (event) => {
     event.preventDefault();
     if (validateForm()) {
       console.log("Formulario válido, procesando...");
+      form.submit(); // Enviar el formulario si es válido
     } else {
+      showGenericValidationErrorMessage();
       console.log("Formulario inválido, mostrando errores...");
     }
   });
 }
+
+
 
 // Mostrar/ocultar la contraseña
 export function togglePasswordVisibility() {
@@ -111,6 +114,7 @@ export function generateDropdownYears(min, max, selectId) {
 export function showGenericValidationErrorMessage() {
   DOM.errorsContainer.innerHTML = ""; // Limpiar los mensajes previos
 
+  // TODO
   console.log("entrando en showGenericValidationErrorMessage");
 
   const validationElements = document.querySelectorAll(
@@ -131,13 +135,13 @@ export function showGenericValidationErrorMessage() {
 
 // Función para validar el DNI o NIE, devuelve un booleano
 export function validateDocument(numDniNie, documentType) {
-  const letter = "TRWAGMYFPDXBNJZSQVHLCKE";
+  const letterString = "TRWAGMYFPDXBNJZSQVHLCKE"; // Cambiar nombre de la variable
 
   const validarDNI = (dni) => {
     if (/^\d{8}[A-Za-z]$/.test(dni)) {
       const nums = parseInt(dni.slice(0, -1), 10);
       const letter = dni.slice(-1).toUpperCase();
-      return letter[nums % 23] === letter;
+      return letterString[nums % 23] === letter; // Usar letterString
     }
     return false;
   };
@@ -147,7 +151,7 @@ export function validateDocument(numDniNie, documentType) {
       const prefijo = { X: 0, Y: 1, Z: 2 }[nie[0]];
       const nums = parseInt(prefijo + nie.slice(1, -1), 10);
       const letter = nie.slice(-1).toUpperCase();
-      return letter[nums % 23] === letter;
+      return letterString[nums % 23] === letter; // Usar letterString
     }
     return false;
   };
@@ -160,23 +164,6 @@ export function validateDocument(numDniNie, documentType) {
   return false;
 }
 
-// Función para validar si hay más de 2 aficiones seleccionadas
-export function validateHobbies() {
-  const aficiones = document.querySelectorAll(
-    'input[name="aficiones"]:checked'
-  );
-  if (aficiones.length < 2) {
-    document.getElementById("error-aficiones").textContent =
-      "Debes seleccionar al menos 2 aficiones.";
-  } else {
-    document.getElementById("error-aficiones").textContent = "";
-  }
-}
-
-// Función para validar los campos de texto
-// export function validateBaseInputText(value) {
-//   return value != "";
-// }
 
 export function validateForm() {
   const form = document.querySelector("form");
@@ -245,13 +232,15 @@ export function validateForm() {
         }
         break;
       case 6: // Documento
-        if (!input || !validateDocument(input.value.trim(), "DNI")) {
+        if (!input || !validateDocument(DOM.dniNie.value.trim(), DOM.documentType.value)) {
+          console.log(DOM.dniNie.value.trim());
+          console.log(DOM.documentType);
           error = arrayErrors[index];
         }
         break;
       case 7: // Tipo de cuenta
         const cuentaSeleccionada = document.querySelector(
-          'input[name="CuentaComo"]:checked'
+          'input[name="accountType"]:checked'
         );
         if (!cuentaSeleccionada) {
           error = arrayErrors[index];
@@ -295,44 +284,3 @@ export function validateForm() {
 
   return isValid;
 }
-
-// Función que procesa el formulario
-export const processForm = function (event) {
-  event.preventDefault();
-
-  if (validateForm()) {
-    // Aquí puedes agregar el código para procesar el formulario si es válido
-    console.log("Formulario válido, procesando...");
-  } else {
-    console.log("Formulario inválido, mostrando errores...");
-  }
-};
-
-/*
-// Función que procesa el formulario
-export function createSubmitEvent() {
-  DOM.form.addEventListener("submit", processForm);
-}
-
-export function handleFormSubmit() {
-  const form = document.querySelector("form");
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    if (utils.validateForm()) {
-      form.submit();
-    }
-  });
-}
-
-export function initializeForm() {
-  generateDropdownYears(1920, 2010, "AnioNacimiento");
-  showCountChars();
-  togglePasswordVisibility();
-  showGenericValidationErrorMessage();
-  validateForm();
-  createSubmitEvent();
-  handleFormSubmit();
-}
-*/
-
